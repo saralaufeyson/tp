@@ -1,11 +1,10 @@
 package com.arjuncodes.studentsystem.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.persistence.Column;
 import javax.persistence.Lob;
 
 @Entity
@@ -19,6 +18,8 @@ public class Student {
 	@Column(columnDefinition = "MEDIUMBLOB")
 	private String image;
     private String day;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String Description;
 
     public Student() {
@@ -27,7 +28,7 @@ public class Student {
     public String getDescription() {
 		return Description;
 	}
-
+    
 	public void setDescription(String description) {
 		Description = description;
 	}

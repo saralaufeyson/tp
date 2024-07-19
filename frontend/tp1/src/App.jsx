@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import DSea from './pages/daysearch'
 import BasicTextFields from './pages/addstratergy'
 import BasicTable from './pages/viewtable'
-import BasicTextFields1 from './pages/editstratergy'
+import EditStrategy from './pages/editstratergy'
 import Viewdoc from './pages/viewstrat'
 function App() {
   
@@ -21,7 +21,7 @@ function App() {
     <Route exact path="/home" element={<DSea/>}/>
     <Route exact path="/add" element={<BasicTextFields/>}/>
     <Route exact path="/view" element={<BasicTable/>}/>
-    <Route exact path="/edit/:id" element={<BasicTextFields1/>}/>
+    <Route exact path="/edit/:id" element={<EditStrategy/>}/>
     
     <Route exact path="/docview/:id" element={<Viewdoc/>}/>
     </Routes>
