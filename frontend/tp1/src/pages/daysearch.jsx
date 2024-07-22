@@ -69,16 +69,17 @@ const ViewComponent = ({ students }) => {
    
     const [data, setData] = useState([]);
     const {id}=useParams()
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
     
   React.useEffect(() => {
     loadUsers();
       },[]);
       const loadUsers=async()=>{
-        const result=await axios.get('http://localhost:8080/trades/getAll')
+        const result=await axios.get(`${API_URL}/trades/getAll`)
         setStudents(result.data)
       }
       const deletestratergy=async(id)=>{
-        await axios.delete(`http://localhost:8080/trades/${id}`)
+        await axios.delete(`${API_URL}/trades/${id}`)
         console.log('deleted')
         loadUsers()
         alert('Page will be refreshed.');
@@ -141,7 +142,7 @@ const DSea = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/trades/getAll');
+      const response = await axios.get(`${API_URL}/trades/getAll`);
       setStudents(response.data);
       setFilteredStudents(response.data);
     } catch (error) {

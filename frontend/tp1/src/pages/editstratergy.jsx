@@ -22,6 +22,7 @@ export default function EditStrategy() {
   const [address, setAddress] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
   const navigate = useNavigate(); 
   const { id } = useParams();
@@ -32,7 +33,7 @@ export default function EditStrategy() {
 
   const loadStrategy = async () => {
     try {
-      const result = await axios.get(`http://localhost:8080/trades/${id}`);
+      const result = await axios.get(`${API_URL}/trades/${id}`);
       const strategy = result.data;
       setDay(strategy.day);
       setName(strategy.name);
@@ -48,7 +49,7 @@ export default function EditStrategy() {
     e.preventDefault();
     const updatedStrategy = { address, name, image, day, description };
     try {
-      await axios.put(`http://localhost:8080/trades/${id}`, updatedStrategy);
+      await axios.put(`${API_URL}/trades/${id}`, updatedStrategy);
       navigate("/view");
     } catch (error) {
       console.error("Error updating strategy:", error);

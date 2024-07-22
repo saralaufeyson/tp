@@ -31,7 +31,7 @@ export default function BasicTable() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
 
 
@@ -41,11 +41,11 @@ export default function BasicTable() {
       loadUsers();
         },[]);
         const loadUsers=async()=>{
-          const result=await axios.get('http://localhost:8080/trades/getAll')
+          const result=await axios.get(`${API_URL}/trades/getAll`)
           setStudents(result.data)
         }
         const deletestratergy=async(id)=>{
-          await axios.delete(`http://localhost:8080/trades/${id}`)
+          await axios.delete(`${API_URL}/trades/${id}`)
           loadUsers()
 
         }

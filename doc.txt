@@ -10,9 +10,8 @@ COPY pom.xml .
 # Copy source files
 COPY src ./src
 
-
 # Package the application
-RUN mvn clean package -DskipTests -X
+RUN mvn clean package -DskipTests
 
 # Run stage
 FROM openjdk:17.0.1-jdk-slim
@@ -22,7 +21,9 @@ WORKDIR /app
 # Copy the jar file from the build stage
 COPY --from=build /app/target/studentsystem-0.0.1-SNAPSHOT.jar studentsystem.jar
 
-
+EXPOSE 8080
 
 # Use array syntax for better signalling and potential variable expansion
 ENTRYPOINT ["java", "-jar", "studentsystem.jar"]
+
+docker run --network springboot-mysql-react-net --name springboot-container1 -p 8080:8080 springbootmysql
