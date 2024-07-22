@@ -1,0 +1,48 @@
+# Git
+.git
+.gitignore
+
+# Node.js (for Vite-React)
+frontend/tp1/node_modules
+npm-debug.log
+yarn-error.log
+
+# Vite build output
+frontend/tp1/dist
+
+# Spring Boot
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Maven
+.mvn
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle
+build/
+
+# Environment files
+.env
+.env.*

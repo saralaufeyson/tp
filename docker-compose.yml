@@ -1,0 +1,48 @@
+services:
+  mysql:
+    image: lazyshika/tradeplanner-final:mysql
+    container_name: mysqldb2
+    environment:
+      MYSQL_ROOT_PASSWORD: sara
+      MYSQL_DATABASE: trading
+      MYSQL_USER: root
+      MYSQL_PASSWORD: sara
+    networks:
+      - springboot-mysql-react-net
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  backend:
+    image: lazyshika/tradeplanner-final:backend
+    container_name: springboot-container2
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb2:3306/trading
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: sara
+    depends_on:
+      - mysql
+    networks:
+      - springboot-mysql-react-net
+    ports:
+      - "8080:8080"
+
+  frontend:
+    image: lazyshika/tradeplanner-final:frontend
+    container_name: frontendc2
+    environment:
+      - REACT_APP_API_URL=http://backend:8080
+    networks:
+      - springboot-mysql-react-net
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+networks:
+  springboot-mysql-react-net:
+    driver: bridge
+
+volumes:
+  mysql-data:

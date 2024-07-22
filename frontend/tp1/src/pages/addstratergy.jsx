@@ -34,12 +34,13 @@ export default function BasicTextFields() {
   const [students, setStudents] = useState([]);
 
   const navigate = useNavigate(); 
-
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
   const handleClick = (e) => {
     e.preventDefault();
     const trade = { address, name, image, day, description };
     console.log(trade);
-    fetch('http://localhost:8080/trades/add', {
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+    fetch(`${API_URL}/trades/add`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(trade),
@@ -50,7 +51,7 @@ export default function BasicTextFields() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:8080/trades/getAll')
+    fetch(`${API_URL}/trades/getAll`)
       .then((res) => res.json())
       .then((result) => {
         setStudents(result);

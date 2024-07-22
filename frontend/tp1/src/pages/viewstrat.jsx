@@ -8,13 +8,14 @@ export default function Viewdoc() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [student, setStudents] = useState({});
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
 
   useEffect(() => {
     loadUser();
   }, []);
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:8080/trades/${id}`);
+    const result = await axios.get(`${API_URL}/trades/${id}`);
     setStudents(result.data);
   };
 
