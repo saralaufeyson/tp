@@ -5,7 +5,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: sara
       MYSQL_DATABASE: trading
-      MYSQL_USER: root
+      MYSQL_USER: roots
       MYSQL_PASSWORD: sara
     networks:
       - springboot-mysql-react-net
@@ -19,7 +19,7 @@ services:
     container_name: springboot-container2
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb2:3306/trading
-      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_USERNAME: roots
       SPRING_DATASOURCE_PASSWORD: sara
     depends_on:
       - mysql
